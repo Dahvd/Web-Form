@@ -11,12 +11,13 @@
         <h1>Welcome to Covid Assesment Website</h1>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <link rel="stylesheet" href="address-align.css">
+        <link rel="stylesheet" href="address-align.css">
+        <link rel='stylesheet' href='styles/style.css'>
     </header>
     <section class='container-fluid'>
         <h2>Please fill out this form</h2>
         <article>
-            <form>
+            <form onsubmit="return validateForm()" id="mainForm" novalidate>
                 <fieldset class="border">
                     <legend class="w-auto">Part 1: Patient Information</legend>
                     <div class='row'>
@@ -28,7 +29,7 @@
                             </div>
                             <div class='col-sm-10'>
                                 <input type="text" id="txtFirstname" name="txtFirstname" required class="form-control"
-                                    placeholder='First Name' required>
+                                    placeholder='First Name'>
                             </div>
                         </div>
 
@@ -40,7 +41,7 @@
                             </div>
                             <div class='col-sm-10'>
                                 <input type="text" id="txtLastname" name="txtLastname" required class='form-control'
-                                    placeholder='Last Name' required>
+                                    placeholder='Last Name'>
                             </div>
 
                         </div>
@@ -107,7 +108,9 @@
                         <div class='form-group aa col-lg-4'>
                             <label for="txtDoB" class='col-form-label'>Date of birth:</label>
                             <div class='aaa'>
-                                <input type="date" id="txtDoB" name="txtDoB" required class='form-control'>
+                                <input type="date" id="txtDoB" name="txtDoB" class='form-control'
+                                        placeholder='Date of Birth'>
+                                        <div id='divDoBError' class='invisible dobErrorMessage'></div>
                             </div>
                         </div>
                     </div>
@@ -301,21 +304,22 @@
                         <label for='ddCountry' class='col-sm-3 col-form-label'>
                             Have you traveled to any country in the last 14 days?
                         </label>
-                        <div>
-                            <select id='ddCountry' name='ddCountry' class='form-control'>
+                        <div class='col-sm-4'>
+                            <select id='ddCountry' name='ddCountry' class='form-control' onchange="updateCountryView()">
                                 <option value="-" selected>-</option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
                             </select>
                         </div>
-
-                        <div>
-                            <label for='txtCountry' class='col-sm-2 col-form-label'>
+                    </div>
+                    <div id='divCountry' class='row form-group invisible'>
+                            <label for='txtCountry' class='col-sm-3 col-form-label'>
                                 Which countries? (Seperate with comma)
                             </label>
-
-                            <input type='text' id='txtCountry' name='txtCountry' class='form-check-inpt'>
-                        </div>
+                            <div class='col-sm-4'>
+                                <input type='text' id='txtCountry' name='txtCountry' class='form-check-inpt' placeholder='Countries'>
+                                <div id='divCountryError' class='invisible dobErrorMessage'></div>
+                            </div>
                     </div>
 
                     <div class='row form-group'>
@@ -348,6 +352,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+    <script src='js/script.js'></script>
 </body>
 
 </html>

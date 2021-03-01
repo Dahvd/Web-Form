@@ -1,0 +1,10 @@
+.invisible {
+    display: none;
+}
+.dobErrorMessage{
+    color: red;
+}
+.hasError{
+    background-color: yellow;
+}
+
