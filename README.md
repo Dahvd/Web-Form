@@ -1,1 +1,3 @@
-# webapp_spring2021_covid_center
+# Covid Assessment Form
+
+This is a very simple html form to assess if someone has covid. 
